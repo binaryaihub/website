@@ -1,36 +1,187 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BinaryAIHub.com
+
+AI products company website — built with Next.js 15, Tailwind CSS v4, shadcn/ui, and Velite MDX.
+
+**Live**: [binaryaihub.com](https://binaryaihub.com)
+
+## Tech Stack
+
+- **Framework**: Next.js 15 (App Router, TypeScript)
+- **Package Manager**: bun
+- **Styling**: Tailwind CSS v4 + shadcn/ui (New York style, Zinc base)
+- **Content**: Velite + MDX for blog posts
+- **Animations**: motion (framer-motion v12+)
+- **Icons**: lucide-react + custom SVG social icons
+- **Hosting**: Vercel
+
+## Prerequisites
+
+- [bun](https://bun.sh) (v1.3+)
+- [Node.js](https://nodejs.org) (v18+)
+- [Vercel CLI](https://vercel.com/cli) (for deployment)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Install dependencies
+bun install
+
+# Run development server (starts Velite watcher + Next.js)
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+binaryaihub/
+├── content/blog/              # MDX blog posts
+├── public/images/             # Logo, OG images, product placeholders
+├── src/
+│   ├── app/                   # Next.js App Router pages
+│   │   ├── layout.tsx         # Root layout (fonts, theme, header/footer)
+│   │   ├── page.tsx           # Landing page
+│   │   ├── globals.css        # Tailwind v4 + OKLCH dark theme
+│   │   ├── products/page.tsx
+│   │   ├── blog/page.tsx
+│   │   ├── blog/[slug]/page.tsx
+│   │   ├── about/page.tsx
+│   │   ├── contact/page.tsx
+│   │   ├── sitemap.ts
+│   │   ├── robots.ts
+│   │   └── not-found.tsx
+│   ├── components/
+│   │   ├── ui/                # shadcn/ui components
+│   │   ├── layout/            # header, footer, mobile-nav, theme-toggle
+│   │   ├── sections/          # hero, products-preview, blog-highlights, cta
+│   │   ├── blog/              # blog-card, blog-header, mdx-components
+│   │   ├── products/          # product-card, app-store-badges
+│   │   ├── icons/             # custom SVG social icons
+│   │   └── shared/            # section-header, glow-effect, animated-container
+│   ├── config/
+│   │   ├── site.ts            # Site metadata, nav items, social links
+│   │   └── products.ts        # Product data
+│   ├── lib/
+│   │   ├── utils.ts           # cn() helper
+│   │   └── blog.ts            # Blog helper functions
+│   └── types/index.ts
+├── velite.config.ts           # Blog collection schema + MDX plugins
+├── next.config.ts
+├── components.json            # shadcn/ui config
+└── package.json
+```
 
-## Learn More
+## Common Tasks
 
-To learn more about Next.js, take a look at the following resources:
+### Adding a Blog Post
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Create a new `.mdx` file in `content/blog/`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```mdx
+---
+title: "Your Post Title"
+description: "A short description."
+date: "2025-03-01"
+tags: ["tag1", "tag2"]
+published: true
+---
 
-## Deploy on Vercel
+Your markdown content here.
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. Run `bun run dev` — Velite watches for changes and rebuilds automatically.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Adding a shadcn/ui Component
+
+```bash
+bunx shadcn@latest add <component-name>
+```
+
+### Editing Products
+
+Update the product list in `src/config/products.ts`.
+
+### Editing Site Config (nav, social links, metadata)
+
+Update `src/config/site.ts`.
+
+## Build & Test Locally
+
+```bash
+# Production build (runs Velite build, then Next.js build)
+bun run build
+
+# Serve the production build locally
+bun run start
+```
+
+Open [http://localhost:3000](http://localhost:3000) to verify.
+
+## Deployment
+
+### Automatic (Recommended)
+
+Connect the GitHub repo to Vercel for automatic deploys on every push:
+
+1. Go to [vercel.com](https://vercel.com) → **Add New Project**
+2. Import `binaryaihub/website` from GitHub
+3. Vercel auto-detects Next.js — just click **Deploy**
+4. Every push to `main` will auto-deploy to production
+
+### Manual (via CLI)
+
+```bash
+# Login (one-time)
+npx vercel login
+
+# Deploy to preview
+npx vercel
+
+# Deploy to production
+npx vercel --prod
+```
+
+### Full Workflow: Edit → Test → Deploy
+
+```bash
+# 1. Make your changes
+# 2. Test locally
+bun run dev
+
+# 3. Build to check for errors
+bun run build
+
+# 4. Commit and push
+git add .
+git commit -m "your commit message"
+git push
+
+# 5a. If GitHub is connected to Vercel → auto-deploys
+# 5b. Or deploy manually
+npx vercel --prod
+```
+
+## Custom Domain (GoDaddy DNS)
+
+The domain `binaryaihub.com` points to Vercel via these DNS records on GoDaddy:
+
+| Type  | Name | Value                    |
+|-------|------|--------------------------|
+| A     | @    | `76.76.21.21`            |
+| CNAME | www  | `cname.vercel-dns.com`   |
+
+If Vercel shows new recommended IPs in the dashboard, update accordingly.
+
+## Routes
+
+| Route              | Description                        |
+|--------------------|------------------------------------|
+| `/`                | Landing page                       |
+| `/products`        | Product showcase                   |
+| `/blog`            | Blog listing                       |
+| `/blog/[slug]`     | Individual blog post               |
+| `/about`           | Company mission, vision, values    |
+| `/contact`         | Contact form + social links        |
+| `/sitemap.xml`     | Auto-generated sitemap             |
+| `/robots.txt`      | Auto-generated robots.txt          |
