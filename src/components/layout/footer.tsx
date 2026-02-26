@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Binary, Coffee, Github, Mail } from "lucide-react";
+import { Coffee, Github, Mail } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/config/site";
 import {
@@ -68,7 +69,7 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 py-12 md:grid-cols-4">
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 font-bold">
-              <Binary className="h-5 w-5 text-primary" />
+              <Image src="/logo.svg" alt="BinaryAIHub" width={24} height={24} />
               {siteConfig.name}
             </Link>
             <p className="mt-3 text-sm text-muted-foreground">
