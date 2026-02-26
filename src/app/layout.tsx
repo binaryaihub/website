@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { BmcWidget } from "@/components/shared/bmc-widget";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -74,6 +75,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
+          <BmcWidget />
         </ThemeProvider>
       </body>
     </html>

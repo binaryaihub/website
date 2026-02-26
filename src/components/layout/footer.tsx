@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Binary, Github, Mail } from "lucide-react";
+import { Binary, Coffee, Github, Mail } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/config/site";
 import {
@@ -27,6 +27,7 @@ const footerLinks = {
   company: [
     { title: "About", href: "/about" },
     { title: "Contact", href: "/contact" },
+    { title: "Support Us", href: siteConfig.links.buymeacoffee },
   ],
   legal: [
     { title: "Privacy", href: "/privacy" },
@@ -101,16 +102,31 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-semibold">Company</h3>
             <ul className="mt-3 space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {link.title}
-                  </Link>
-                </li>
-              ))}
+              {footerLinks.company.map((link) => {
+                const isExternal = link.href.startsWith("http");
+                return (
+                  <li key={link.href}>
+                    {isExternal ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        <Coffee className="h-3.5 w-3.5 text-[#FFDD00]" />
+                        {link.title}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        {link.title}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
