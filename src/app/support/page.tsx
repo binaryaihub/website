@@ -4,7 +4,7 @@ import { Support } from "@/components/sections/support";
 export const metadata: Metadata = {
   title: "Support",
   description:
-    "Support BinaryAIHub's development. Buy us a coffee to help fund free AI-powered apps, open-source tools, and quality content.",
+    "Get in touch with BinaryAIHub. Reach out to us at hello@binaryaihub.com for questions, feedback, or support.",
 };
 
 export default function SupportPage() {

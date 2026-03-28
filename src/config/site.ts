@@ -23,7 +23,6 @@ export const siteConfig: SiteConfig = {
     hashnode: "https://binaryaihub.hashnode.dev",
     producthunt: "https://producthunt.com/@binaryaihub",
     huggingface: "https://huggingface.co/binaryaihub",
-    buymeacoffee: "https://www.buymeacoffee.com/BINARYAIHUB",
   },
   navItems: [
     { title: "Products", href: "/products" },

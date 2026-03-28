@@ -45,7 +45,6 @@ export interface SiteConfig {
     hashnode: string;
     producthunt: string;
     huggingface: string;
-    buymeacoffee: string;
   };
   navItems: NavItem[];
 }
