@@ -3,6 +3,9 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { BackToTop } from "@/components/layout/back-to-top";
+import { PageTransition } from "@/components/layout/page-transition";
+import { ScrollProgress } from "@/components/shared/scroll-progress";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -69,11 +72,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ScrollProgress />
           <div className="relative flex min-h-screen flex-col">
             <Header />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1">
+              <PageTransition>{children}</PageTransition>
+            </main>
             <Footer />
           </div>
+          <BackToTop />
         </ThemeProvider>
       </body>
     </html>

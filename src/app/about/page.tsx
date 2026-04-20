@@ -8,6 +8,9 @@ import {
 } from "@/components/ui/card";
 import { SectionHeader } from "@/components/shared/section-header";
 import { AnimatedContainer } from "@/components/shared/animated-container";
+import { AuroraBackground } from "@/components/shared/aurora-background";
+import { GridBackground } from "@/components/shared/grid-background";
+import { SpotlightCard } from "@/components/shared/spotlight-card";
 
 export const metadata: Metadata = {
   title: "About",
@@ -38,8 +41,10 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <div className="py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div className="relative overflow-hidden py-24">
+      <AuroraBackground intensity="subtle" />
+      <GridBackground />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <AnimatedContainer>
           <SectionHeader
             title="About BinaryAIHub"
@@ -69,20 +74,27 @@ export default function AboutPage() {
           </div>
         </AnimatedContainer>
 
-        <div className="mt-20 grid gap-6 sm:grid-cols-3">
+        <div className="mt-20 grid gap-6 sm:grid-cols-3 [perspective:1200px]">
           {values.map((value, index) => (
-            <AnimatedContainer key={value.title} delay={0.2 + index * 0.1}>
-              <Card className="h-full border-border/50 bg-card/50">
-                <CardHeader>
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                    <value.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <CardTitle>{value.title}</CardTitle>
-                  <CardDescription className="leading-relaxed">
-                    {value.description}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
+            <AnimatedContainer
+              key={value.title}
+              delay={0.2 + index * 0.1}
+              variant="fade-up"
+            >
+              <SpotlightCard className="h-full rounded-xl">
+                <Card className="group relative h-full overflow-hidden border-border/50 bg-card/60 backdrop-blur-sm transition-all duration-300 hover:border-border hover:shadow-[0_0_30px_-10px_oklch(0.7_0.2_270/0.3)]">
+                  <div className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 [background:linear-gradient(135deg,oklch(0.7_0.25_270/0.15),transparent_40%,oklch(0.75_0.18_200/0.15))]" />
+                  <CardHeader>
+                    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 ring-1 ring-border/40 transition-transform duration-300 group-hover:scale-110">
+                      <value.icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <CardTitle>{value.title}</CardTitle>
+                    <CardDescription className="leading-relaxed">
+                      {value.description}
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              </SpotlightCard>
             </AnimatedContainer>
           ))}
         </div>

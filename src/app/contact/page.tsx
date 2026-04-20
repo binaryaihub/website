@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Mail, Twitter, Github } from "lucide-react";
 import { SectionHeader } from "@/components/shared/section-header";
 import { AnimatedContainer } from "@/components/shared/animated-container";
+import { AuroraBackground } from "@/components/shared/aurora-background";
+import { GridBackground } from "@/components/shared/grid-background";
 import { ContactForm } from "@/components/shared/contact-form";
 import { siteConfig } from "@/config/site";
 
@@ -34,8 +36,10 @@ const socialLinks = [
 
 export default function ContactPage() {
   return (
-    <div className="py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div className="relative overflow-hidden py-24">
+      <AuroraBackground intensity="subtle" />
+      <GridBackground />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <AnimatedContainer>
           <SectionHeader
             title="Get in Touch"
@@ -62,13 +66,15 @@ export default function ContactPage() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 rounded-lg border border-border/50 bg-card/50 p-4 transition-colors hover:border-border hover:bg-card"
+                    className="group flex items-center gap-4 rounded-lg border border-border/50 bg-card/60 p-4 backdrop-blur-sm transition-all hover:border-border hover:bg-card hover:shadow-[0_0_20px_-8px_oklch(0.7_0.2_270/0.35)] hover:-translate-y-0.5"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 ring-1 ring-border/40 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-6deg]">
                       <link.icon className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <div className="text-sm font-medium">{link.name}</div>
+                      <div className="text-sm font-medium transition-colors group-hover:text-primary">
+                        {link.name}
+                      </div>
                       <div className="text-sm text-muted-foreground">
                         {link.description}
                       </div>

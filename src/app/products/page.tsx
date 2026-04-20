@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { SectionHeader } from "@/components/shared/section-header";
 import { AnimatedContainer } from "@/components/shared/animated-container";
+import { AuroraBackground } from "@/components/shared/aurora-background";
+import { GridBackground } from "@/components/shared/grid-background";
 import { ProductCard } from "@/components/products/product-card";
 import { AppStoreBadges } from "@/components/products/app-store-badges";
 import { products } from "@/config/products";
@@ -13,8 +15,10 @@ export const metadata: Metadata = {
 
 export default function ProductsPage() {
   return (
-    <div className="py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div className="relative overflow-hidden py-24">
+      <AuroraBackground intensity="subtle" />
+      <GridBackground />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <AnimatedContainer>
           <SectionHeader
             title="Our Products"
@@ -22,7 +26,7 @@ export default function ProductsPage() {
           />
         </AnimatedContainer>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 [perspective:1200px]">
           {products.map((product, index) => (
             <ProductCard key={product.name} product={product} index={index} />
           ))}

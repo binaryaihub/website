@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { SectionHeader } from "@/components/shared/section-header";
 import { AnimatedContainer } from "@/components/shared/animated-container";
+import { AuroraBackground } from "@/components/shared/aurora-background";
+import { GridBackground } from "@/components/shared/grid-background";
 import { BlogCard } from "@/components/blog/blog-card";
 import { getAllPosts } from "@/lib/blog";
 
@@ -14,8 +16,10 @@ export default async function BlogPage() {
   const posts = await getAllPosts();
 
   return (
-    <div className="py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div className="relative overflow-hidden py-24">
+      <AuroraBackground intensity="subtle" />
+      <GridBackground />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <AnimatedContainer>
           <SectionHeader
             title="Blog"
@@ -24,7 +28,7 @@ export default async function BlogPage() {
         </AnimatedContainer>
 
         {posts.length > 0 ? (
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 [perspective:1200px]">
             {posts.map((post, index) => (
               <BlogCard
                 key={post.slugAsParams}
