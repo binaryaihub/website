@@ -2,6 +2,21 @@ import type { Product } from "@/types";
 
 export const products: Product[] = [
   {
+    name: "BinaryAIHub Learn",
+    description:
+      "A free practice platform for breaking into AI — build three job-realistic projects with an AI mentor that reviews your code like a senior engineer.",
+    status: "live",
+    platforms: ["web"],
+    url: "https://learn.binaryaihub.com",
+    features: [
+      "Python → AI project track",
+      "AI mentor code reviews",
+      "Gated steps & quizzes",
+      "Public verified completion pages",
+    ],
+    icon: "graduation-cap",
+  },
+  {
     name: "Marwadi Jewellers",
     description:
       "A full e-commerce storefront for heritage-inspired imitation jewellery — hand-crafted bridal kundan, temple polki, and men's collections with pan-India delivery.",

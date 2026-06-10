@@ -26,6 +26,7 @@ export const siteConfig: SiteConfig = {
   },
   navItems: [
     { title: "Products", href: "/products" },
+    { title: "Learn", href: "https://learn.binaryaihub.com" },
     { title: "Blog", href: "/blog" },
     { title: "About", href: "/about" },
     { title: "Contact", href: "/contact" },

@@ -6,6 +6,7 @@ import {
   Languages,
   Dumbbell,
   Gem,
+  GraduationCap,
   HeartHandshake,
   Smartphone,
   Globe,
@@ -30,6 +31,7 @@ const iconMap: Record<string, LucideIcon> = {
   languages: Languages,
   dumbbell: Dumbbell,
   gem: Gem,
+  "graduation-cap": GraduationCap,
   "heart-handshake": HeartHandshake,
 };
 
