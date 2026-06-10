@@ -10,7 +10,7 @@ import { products } from "@/config/products";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Explore our AI-powered mobile apps for iOS and Android. Smart tools designed to make your life better.",
+    "Explore our live web products and upcoming AI-powered mobile apps. Smart tools designed to make your life better.",
 };
 
 export default function ProductsPage() {
@@ -22,7 +22,7 @@ export default function ProductsPage() {
         <AnimatedContainer>
           <SectionHeader
             title="Our Products"
-            description="We're building a suite of AI-powered mobile applications. Each product is crafted to solve real problems with intelligent technology."
+            description="From live websites serving real customers to upcoming AI-powered mobile apps — each product is crafted to solve real problems with intelligent technology."
           />
         </AnimatedContainer>
 
@@ -34,7 +34,7 @@ export default function ProductsPage() {
 
         <AnimatedContainer delay={0.4} className="mt-16 text-center">
           <p className="mb-4 text-muted-foreground">
-            Our apps will be available on both major platforms.
+            Our mobile apps will be available on both major platforms.
           </p>
           <div className="flex justify-center">
             <AppStoreBadges />

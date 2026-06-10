@@ -13,9 +13,10 @@ export interface Product {
   name: string;
   description: string;
   status: "coming-soon" | "beta" | "live";
-  platforms: ("ios" | "android")[];
+  platforms: ("ios" | "android" | "web")[];
   features: string[];
   icon: string;
+  url?: string;
 }
 
 export interface NavItem {

@@ -6,7 +6,10 @@ import {
   Brain,
   Languages,
   Dumbbell,
+  Gem,
+  HeartHandshake,
   ArrowRight,
+  ExternalLink,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -29,6 +32,14 @@ const iconMap: Record<string, LucideIcon> = {
   brain: Brain,
   languages: Languages,
   dumbbell: Dumbbell,
+  gem: Gem,
+  "heart-handshake": HeartHandshake,
+};
+
+const platformLabels: Record<string, string> = {
+  ios: "iOS",
+  android: "Android",
+  web: "Web",
 };
 
 export function ProductsPreview() {
@@ -39,7 +50,7 @@ export function ProductsPreview() {
         <AnimatedContainer>
           <SectionHeader
             title="Our Products"
-            description="AI-powered mobile apps designed to make your life smarter and more productive."
+            description="Live web experiences and upcoming AI-powered mobile apps, built to solve real problems."
           />
         </AnimatedContainer>
 
@@ -64,14 +75,24 @@ export function ProductsPreview() {
                         >
                           <Icon className="h-5 w-5 text-primary" />
                         </motion.div>
-                        <Badge variant="secondary">Coming Soon</Badge>
+                        <Badge
+                          variant={
+                            product.status === "live" ? "default" : "secondary"
+                          }
+                        >
+                          {product.status === "coming-soon"
+                            ? "Coming Soon"
+                            : product.status === "beta"
+                              ? "Beta"
+                              : "Live"}
+                        </Badge>
                       </div>
                       <CardTitle className="text-lg transition-colors group-hover:text-foreground">
                         {product.name}
                       </CardTitle>
                       <CardDescription>{product.description}</CardDescription>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="space-y-3">
                       <div className="flex flex-wrap gap-1.5">
                         {product.platforms.map((platform) => (
                           <Badge
@@ -79,10 +100,21 @@ export function ProductsPreview() {
                             variant="outline"
                             className="text-xs"
                           >
-                            {platform === "ios" ? "iOS" : "Android"}
+                            {platformLabels[platform] ?? platform}
                           </Badge>
                         ))}
                       </div>
+                      {product.url && (
+                        <a
+                          href={product.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                        >
+                          Visit site
+                          <ExternalLink className="h-3.5 w-3.5" />
+                        </a>
+                      )}
                     </CardContent>
                   </Card>
                 </SpotlightCard>

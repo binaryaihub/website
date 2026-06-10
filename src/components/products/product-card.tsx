@@ -5,8 +5,12 @@ import {
   Brain,
   Languages,
   Dumbbell,
+  Gem,
+  HeartHandshake,
   Smartphone,
+  Globe,
   CheckCircle2,
+  ExternalLink,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -25,6 +29,14 @@ const iconMap: Record<string, LucideIcon> = {
   brain: Brain,
   languages: Languages,
   dumbbell: Dumbbell,
+  gem: Gem,
+  "heart-handshake": HeartHandshake,
+};
+
+const platformLabels: Record<string, string> = {
+  ios: "iOS",
+  android: "Android",
+  web: "Web",
 };
 
 interface ProductCardProps {
@@ -34,6 +46,9 @@ interface ProductCardProps {
 
 export function ProductCard({ product, index }: ProductCardProps) {
   const Icon = iconMap[product.icon] || Brain;
+  const PlatformIcon = product.platforms.every((p) => p === "web")
+    ? Globe
+    : Smartphone;
 
   return (
     <AnimatedContainer delay={index * 0.08} variant="fade-up">
@@ -66,11 +81,11 @@ export function ProductCard({ product, index }: ProductCardProps) {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center gap-2">
-              <Smartphone className="h-4 w-4 text-muted-foreground" />
+              <PlatformIcon className="h-4 w-4 text-muted-foreground" />
               <div className="flex gap-1.5">
                 {product.platforms.map((platform) => (
                   <Badge key={platform} variant="outline" className="text-xs">
-                    {platform === "ios" ? "iOS" : "Android"}
+                    {platformLabels[platform] ?? platform}
                   </Badge>
                 ))}
               </div>
@@ -91,6 +106,18 @@ export function ProductCard({ product, index }: ProductCardProps) {
                 </motion.li>
               ))}
             </ul>
+
+            {product.url && (
+              <a
+                href={product.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+              >
+                Visit site
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            )}
           </CardContent>
         </Card>
       </SpotlightCard>

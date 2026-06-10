@@ -2,6 +2,36 @@ import type { Product } from "@/types";
 
 export const products: Product[] = [
   {
+    name: "Marwadi Jewellers",
+    description:
+      "A full e-commerce storefront for heritage-inspired imitation jewellery — hand-crafted bridal kundan, temple polki, and men's collections with pan-India delivery.",
+    status: "live",
+    platforms: ["web"],
+    url: "https://marwadijewellers.com",
+    features: [
+      "Curated catalog & collections",
+      "UPI & Cash on Delivery payments",
+      "Order tracking",
+      "Free pan-India shipping",
+    ],
+    icon: "gem",
+  },
+  {
+    name: "Narayan Goshala",
+    description:
+      "Website for a non-profit cow shelter caring for 500+ rescued cattle — built as a community service to help them reach donors and volunteers.",
+    status: "live",
+    platforms: ["web"],
+    url: "https://narayangoshala.vercel.app",
+    features: [
+      "Donations & cow adoption",
+      "Rescue & medical care programs",
+      "Photo gallery",
+      "Volunteer & contact info",
+    ],
+    icon: "heart-handshake",
+  },
+  {
     name: "AI Note Companion",
     description:
       "An intelligent note-taking app that understands context, auto-tags, and surfaces insights from your notes using on-device AI.",
