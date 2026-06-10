@@ -26,6 +26,7 @@ import { AnimatedContainer } from "@/components/shared/animated-container";
 import { SpotlightCard } from "@/components/shared/spotlight-card";
 import { Magnetic } from "@/components/shared/magnetic";
 import { AuroraBackground } from "@/components/shared/aurora-background";
+import { Stats } from "@/components/sections/stats";
 import { products } from "@/config/products";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -52,6 +53,10 @@ export function ProductsPreview() {
             title="Our Products"
             description="Live web experiences and upcoming AI-powered mobile apps, built to solve real problems."
           />
+        </AnimatedContainer>
+
+        <AnimatedContainer delay={0.1} className="mt-8">
+          <Stats />
         </AnimatedContainer>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 [perspective:1200px]">

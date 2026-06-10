@@ -3,8 +3,10 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/shared/section-header";
 import { AnimatedContainer } from "@/components/shared/animated-container";
+import { AuroraBackground } from "@/components/shared/aurora-background";
 import { Magnetic } from "@/components/shared/magnetic";
 import { BlogCard } from "./blog-card";
+import { BlogTicker } from "./blog-ticker";
 import { getRecentPosts } from "@/lib/blog";
 
 export async function BlogHighlights() {
@@ -14,12 +16,17 @@ export async function BlogHighlights() {
 
   return (
     <section className="relative overflow-hidden border-t border-border/40 py-24">
+      <AuroraBackground intensity="subtle" className="opacity-60" />
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <AnimatedContainer>
           <SectionHeader
             title="Latest from the Blog"
             description="Insights on AI, mobile development, and building products that matter."
           />
+        </AnimatedContainer>
+
+        <AnimatedContainer delay={0.1} className="mt-8">
+          <BlogTicker posts={posts} />
         </AnimatedContainer>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 [perspective:1200px]">

@@ -159,7 +159,8 @@
 @media (prefers-reduced-motion: reduce) {
   .aurora-blob,
   .gradient-shimmer,
-  .float-dot {
+  .float-dot,
+  .marquee-track {
     animation: none;
   }
 }
@@ -177,6 +178,17 @@
 .gradient-shimmer {
   background-size: 200% 200%;
   animation: gradient-shift 8s ease-in-out infinite;
+}
+
+/* Right-to-left stats ticker */
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
 }
 
 /* Gentle drifting dots (hero depth) */
