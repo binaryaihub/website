@@ -15,7 +15,7 @@ export function ScrollProgress() {
     <motion.div
       aria-hidden="true"
       style={{ scaleX, transformOrigin: "0% 50%" }}
-      className="fixed inset-x-0 top-0 z-[60] h-0.5 bg-gradient-to-r from-[oklch(0.6_0.25_270)] via-[oklch(0.7_0.2_200)] to-[oklch(0.75_0.18_160)]"
+      className="fixed inset-x-0 top-0 z-[60] h-0.5 bg-gradient-to-r from-[oklch(0.5_0.16_255)] via-[oklch(0.72_0.12_195)] to-[oklch(0.76_0.11_175)]"
     />
   );
 }

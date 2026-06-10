@@ -33,7 +33,7 @@ export function SpotlightCard({
   const spotlight = useTransform(
     [mouseX, mouseY],
     ([x, y]) =>
-      `radial-gradient(420px circle at ${x}px ${y}px, oklch(0.7 0.2 270 / 0.15), transparent 60%)`
+      `radial-gradient(420px circle at ${x}px ${y}px, oklch(0.6 0.15 250 / 0.15), transparent 60%)`
   );
 
   function handleMove(e: MouseEvent<HTMLDivElement>) {

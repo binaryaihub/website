@@ -45,7 +45,7 @@ const platformLabels: Record<string, string> = {
 
 export function ProductsPreview() {
   return (
-    <section className="relative overflow-hidden py-24">
+    <section className="relative overflow-hidden border-t border-border/40 py-24">
       <AuroraBackground intensity="subtle" className="opacity-60" />
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <AnimatedContainer>
@@ -69,8 +69,8 @@ export function ProductsPreview() {
                 variant="fade-up"
               >
                 <SpotlightCard className="h-full rounded-xl">
-                  <Card className="group relative h-full overflow-hidden border-border/50 bg-card/60 backdrop-blur-sm transition-all duration-300 hover:border-border hover:shadow-[0_0_30px_-10px_oklch(0.7_0.2_270/0.3)]">
-                    <div className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 [background:linear-gradient(135deg,oklch(0.7_0.25_270/0.15),transparent_40%,oklch(0.75_0.18_200/0.15))]" />
+                  <Card className="group relative h-full overflow-hidden border-border/50 bg-card/60 backdrop-blur-sm transition-all duration-300 hover:border-border hover:shadow-[0_0_30px_-10px_oklch(0.6_0.15_250/0.3)]">
+                    <div className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 [background:linear-gradient(135deg,oklch(0.6_0.15_250/0.15),transparent_40%,oklch(0.72_0.12_195/0.15))]" />
                     <CardHeader>
                       <div className="mb-3 flex items-center justify-between">
                         <motion.div

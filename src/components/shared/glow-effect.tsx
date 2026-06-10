@@ -15,7 +15,7 @@ export function GlowEffect({ className }: GlowEffectProps) {
         className
       )}
     >
-      <div className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[oklch(0.6_0.25_270)] to-[oklch(0.7_0.2_200)] opacity-20" />
+      <div className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[oklch(0.5_0.16_255)] to-[oklch(0.72_0.12_195)] opacity-20" />
     </div>
   );
 }

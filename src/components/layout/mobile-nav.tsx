@@ -108,7 +108,7 @@ export function MobileNav() {
                     className={cn(
                       "h-1.5 w-1.5 rounded-full transition-all",
                       active
-                        ? "bg-gradient-to-br from-[oklch(0.7_0.2_270)] to-[oklch(0.75_0.18_200)] shadow-[0_0_8px_oklch(0.7_0.2_270)]"
+                        ? "bg-gradient-to-br from-[oklch(0.6_0.15_250)] to-[oklch(0.72_0.12_195)] shadow-[0_0_8px_oklch(0.6_0.15_250)]"
                         : "bg-muted-foreground/30 group-hover:bg-foreground/60"
                     )}
                   />

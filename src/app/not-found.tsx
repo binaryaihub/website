@@ -13,7 +13,7 @@ export default function NotFound() {
       <GridBackground />
       <div className="relative flex flex-col items-center text-center">
         <AnimatedContainer variant="blur-up">
-          <h1 className="bg-gradient-to-r from-[oklch(0.7_0.25_270)] via-[oklch(0.75_0.2_220)] to-[oklch(0.78_0.2_310)] bg-clip-text text-7xl font-bold text-transparent gradient-shimmer sm:text-8xl">
+          <h1 className="bg-gradient-to-r from-[oklch(0.6_0.15_250)] via-[oklch(0.7_0.13_215)] to-[oklch(0.74_0.12_180)] bg-clip-text text-7xl font-bold text-transparent gradient-shimmer sm:text-8xl">
             404
           </h1>
         </AnimatedContainer>

@@ -3,7 +3,7 @@ import type { SiteConfig } from "@/types";
 export const siteConfig: SiteConfig = {
   name: "BinaryAIHub",
   description:
-    "Building intelligent iOS & Android apps powered by AI. Explore our products, read our blog, and join us on the journey.",
+    "Privacy-first, on-device AI for iOS & Android. We build local-first mobile apps where intelligence runs on your phone — and your data never leaves it.",
   url: "https://binaryaihub.com",
   ogImage: "https://binaryaihub.com/images/og.png",
   email: "hello@binaryaihub.com",

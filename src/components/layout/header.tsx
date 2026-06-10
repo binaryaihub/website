@@ -37,7 +37,7 @@ export function Header() {
         className={cn(
           "pointer-events-none absolute inset-x-0 bottom-0 h-px transition-opacity duration-500",
           scrolled ? "opacity-100" : "opacity-0",
-          "bg-gradient-to-r from-transparent via-[oklch(0.7_0.2_270)]/60 to-transparent"
+          "bg-gradient-to-r from-transparent via-[oklch(0.6_0.15_250)]/60 to-transparent"
         )}
       />
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -50,7 +50,7 @@ export function Header() {
             transition={{ duration: 0.5 }}
             className="relative"
           >
-            <span className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[oklch(0.7_0.2_270)]/0 blur-md transition-all duration-300 group-hover:bg-[oklch(0.7_0.2_270)]/40" />
+            <span className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[oklch(0.6_0.15_250)]/0 blur-md transition-all duration-300 group-hover:bg-[oklch(0.6_0.15_250)]/40" />
             <Image src="/logo.svg" alt="BinaryAIHub" width={28} height={28} />
           </motion.div>
           <span className="transition-colors group-hover:text-primary">
@@ -81,7 +81,7 @@ export function Header() {
                 {!active && (
                   <span
                     aria-hidden
-                    className="absolute inset-x-3 bottom-1 h-px origin-left scale-x-0 bg-gradient-to-r from-[oklch(0.7_0.2_270)] to-[oklch(0.75_0.18_200)] transition-transform duration-300 group-hover:scale-x-100"
+                    className="absolute inset-x-3 bottom-1 h-px origin-left scale-x-0 bg-gradient-to-r from-[oklch(0.6_0.15_250)] to-[oklch(0.72_0.12_195)] transition-transform duration-300 group-hover:scale-x-100"
                   />
                 )}
               </Link>

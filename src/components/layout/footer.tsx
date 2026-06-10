@@ -83,7 +83,7 @@ export function Footer() {
   const reduceMotion = useReducedMotion();
   return (
     <footer className="relative overflow-hidden border-t border-border/40">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.7_0.2_270)]/60 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.6_0.15_250)]/60 to-transparent" />
       <AuroraBackground intensity="subtle" className="opacity-50" />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -108,11 +108,12 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              Building intelligent mobile apps powered by AI.
+              Privacy-first, on-device AI for iOS &amp; Android. Local-first by
+              design — your data stays yours.
             </p>
             <a
               href={`mailto:${siteConfig.email}`}
-              className="group mt-4 inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/40 px-3 py-1.5 text-sm text-muted-foreground backdrop-blur-sm transition-all hover:border-border hover:bg-background/60 hover:text-foreground hover:shadow-[0_0_20px_-8px_oklch(0.7_0.2_270/0.5)]"
+              className="group mt-4 inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/40 px-3 py-1.5 text-sm text-muted-foreground backdrop-blur-sm transition-all hover:border-border hover:bg-background/60 hover:text-foreground hover:shadow-[0_0_20px_-8px_oklch(0.6_0.15_250/0.5)]"
             >
               <Mail className="h-3.5 w-3.5" />
               <span>{siteConfig.email}</span>
@@ -140,7 +141,7 @@ export function Footer() {
                       href={link.href}
                       className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
                     >
-                      <span className="h-px w-0 bg-gradient-to-r from-[oklch(0.7_0.2_270)] to-[oklch(0.75_0.18_200)] transition-all duration-300 group-hover:w-3" />
+                      <span className="h-px w-0 bg-gradient-to-r from-[oklch(0.6_0.15_250)] to-[oklch(0.72_0.12_195)] transition-all duration-300 group-hover:w-3" />
                       <span className="transition-transform duration-300 group-hover:translate-x-0.5">
                         {link.title}
                       </span>
@@ -153,7 +154,7 @@ export function Footer() {
         </div>
 
         <Separator className="bg-border/40" />
-        <div className="flex flex-wrap items-center justify-center gap-2 py-6">
+        <div className="flex flex-wrap items-center justify-center gap-2 pt-6 pb-4">
           {socialLinks.map((social, i) => (
             <motion.a
               key={social.name}
@@ -175,8 +176,7 @@ export function Footer() {
           ))}
         </div>
 
-        <Separator className="bg-border/40" />
-        <div className="flex flex-col items-center justify-between gap-2 py-6 text-xs text-muted-foreground sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-2 pb-6 text-xs text-muted-foreground sm:flex-row">
           <p>
             &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
             reserved.

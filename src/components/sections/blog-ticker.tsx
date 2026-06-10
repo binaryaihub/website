@@ -19,7 +19,7 @@ export function BlogTicker({ posts }: { posts: BlogTickerPost[] }) {
           key={post.slugAsParams}
           className="inline-flex items-center gap-2 text-sm whitespace-nowrap"
         >
-          <span className="bg-gradient-to-r from-[oklch(0.7_0.25_270)] via-[oklch(0.75_0.2_220)] to-[oklch(0.78_0.2_310)] bg-clip-text font-bold text-transparent">
+          <span className="bg-gradient-to-r from-[oklch(0.6_0.15_250)] via-[oklch(0.7_0.13_215)] to-[oklch(0.74_0.12_180)] bg-clip-text font-bold text-transparent">
             {new Date(post.date).toLocaleDateString("en-US", {
               month: "short",
               year: "numeric",
@@ -28,7 +28,7 @@ export function BlogTicker({ posts }: { posts: BlogTickerPost[] }) {
           <span className="text-muted-foreground">{post.title}</span>
           <span
             aria-hidden
-            className="ml-10 h-1 w-1 rounded-full bg-[oklch(0.7_0.2_270)]/60"
+            className="ml-10 h-1 w-1 rounded-full bg-[oklch(0.6_0.15_250)]/60"
           />
         </span>
       ))}

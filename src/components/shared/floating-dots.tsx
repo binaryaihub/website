@@ -25,7 +25,7 @@ export function FloatingDots({ className }: { className?: string }) {
       {dots.map((dot, i) => (
         <span
           key={i}
-          className="float-dot absolute rounded-full bg-[oklch(0.72_0.15_270)] opacity-20 blur-[1px]"
+          className="float-dot absolute rounded-full bg-[oklch(0.62_0.13_250)] opacity-20 blur-[1px]"
           style={{
             left: dot.left,
             top: dot.top,

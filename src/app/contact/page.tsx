@@ -66,7 +66,7 @@ export default function ContactPage() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-4 rounded-lg border border-border/50 bg-card/60 p-4 backdrop-blur-sm transition-all hover:border-border hover:bg-card hover:shadow-[0_0_20px_-8px_oklch(0.7_0.2_270/0.35)] hover:-translate-y-0.5"
+                    className="group flex items-center gap-4 rounded-lg border border-border/50 bg-card/60 p-4 backdrop-blur-sm transition-all hover:border-border hover:bg-card hover:shadow-[0_0_20px_-8px_oklch(0.6_0.15_250/0.35)] hover:-translate-y-0.5"
                   >
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 ring-1 ring-border/40 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-6deg]">
                       <link.icon className="h-5 w-5 text-primary" />

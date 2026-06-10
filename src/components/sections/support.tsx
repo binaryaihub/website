@@ -40,8 +40,8 @@ export function Support() {
           className="mx-auto mt-12 max-w-md [perspective:1200px]"
         >
           <SpotlightCard className="rounded-2xl">
-            <div className="group relative flex flex-col items-center overflow-hidden rounded-2xl border border-border/60 bg-card/60 p-8 text-center backdrop-blur-md transition-all duration-300 hover:border-border hover:shadow-[0_0_40px_-10px_oklch(0.7_0.2_270/0.35)]">
-              <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 [background:linear-gradient(135deg,oklch(0.7_0.25_270/0.15),transparent_40%,oklch(0.75_0.18_200/0.15))]" />
+            <div className="group relative flex flex-col items-center overflow-hidden rounded-2xl border border-border bg-card p-8 text-center shadow-lg shadow-black/5 transition-all duration-300 hover:shadow-[0_0_40px_-10px_oklch(0.6_0.15_250/0.35)]">
+              <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 [background:linear-gradient(135deg,oklch(0.6_0.15_250/0.15),transparent_40%,oklch(0.72_0.12_195/0.15))]" />
               <motion.div
                 whileHover={{ rotate: [0, -8, 8, 0], scale: 1.06 }}
                 transition={{ duration: 0.55 }}
@@ -54,12 +54,15 @@ export function Support() {
                 Drop us an email and we&apos;ll get back to you as soon as
                 possible.
               </p>
+              <p className="mt-1 text-sm font-medium text-foreground/80">
+                {siteConfig.email}
+              </p>
               <Magnetic className="mt-6">
                 <a href={`mailto:${siteConfig.email}`}>
                   <Button className="group/btn relative gap-2 overflow-hidden">
-                    <span className="absolute inset-0 -z-10 bg-gradient-to-r from-[oklch(0.6_0.25_270)] via-[oklch(0.7_0.2_220)] to-[oklch(0.65_0.22_310)] opacity-0 transition-opacity duration-300 group-hover/btn:opacity-100" />
+                    <span className="absolute inset-0 -z-10 bg-gradient-to-r from-[oklch(0.5_0.16_255)] via-[oklch(0.68_0.13_220)] to-[oklch(0.7_0.12_180)] opacity-0 transition-opacity duration-300 group-hover/btn:opacity-100" />
                     <Mail className="h-4 w-4" />
-                    {siteConfig.email}
+                    Write to us
                   </Button>
                 </a>
               </Magnetic>

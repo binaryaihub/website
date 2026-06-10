@@ -16,13 +16,13 @@ import { GridBackground } from "@/components/shared/grid-background";
 import { FloatingDots } from "@/components/shared/floating-dots";
 import { Magnetic } from "@/components/shared/magnetic";
 
-const LINE_ONE = "Intelligence in";
-const LINE_TWO = "Your Pocket";
+const LINE_ONE = "On-Device AI,";
+const LINE_TWO = "Private by Design";
 const TAGLINES = [
-  "Smart apps for the real world.",
-  "AI that fits in your pocket.",
+  "Local-first architecture. Your data never leaves your phone.",
+  "On-device inference — fast, offline, and private.",
   "Built for iOS. Built for Android.",
-  "Fast, focused, beautifully useful.",
+  "Serious engineering, beautifully useful apps.",
 ];
 
 export function Hero() {
@@ -64,17 +64,17 @@ export function Hero() {
       <motion.div
         aria-hidden
         style={{ x: orb1X, y: orb1Y }}
-        className="pointer-events-none absolute left-[8%] top-[18%] h-24 w-24 rounded-full bg-[oklch(0.7_0.2_270)] opacity-30 blur-2xl"
+        className="pointer-events-none absolute left-[8%] top-[18%] h-24 w-24 rounded-full bg-[oklch(0.6_0.15_250)] opacity-30 blur-2xl"
       />
       <motion.div
         aria-hidden
         style={{ x: orb2X, y: orb2Y }}
-        className="pointer-events-none absolute right-[10%] top-[28%] h-32 w-32 rounded-full bg-[oklch(0.75_0.18_200)] opacity-30 blur-2xl"
+        className="pointer-events-none absolute right-[10%] top-[28%] h-32 w-32 rounded-full bg-[oklch(0.72_0.12_195)] opacity-30 blur-2xl"
       />
       <motion.div
         aria-hidden
         style={{ x: orb3X, y: orb3Y }}
-        className="pointer-events-none absolute left-[20%] bottom-[12%] h-28 w-28 rounded-full bg-[oklch(0.7_0.22_310)] opacity-25 blur-2xl"
+        className="pointer-events-none absolute left-[20%] bottom-[12%] h-28 w-28 rounded-full bg-[oklch(0.7_0.12_180)] opacity-25 blur-2xl"
       />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -89,15 +89,15 @@ export function Hero() {
                 animate={reduceMotion ? undefined : { rotate: [0, 15, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
               >
-                <Sparkles className="h-3.5 w-3.5 text-[oklch(0.75_0.18_280)]" />
+                <Sparkles className="h-3.5 w-3.5 text-[oklch(0.65_0.13_245)]" />
               </motion.span>
-              AI-Powered Mobile Apps
+              Privacy-First &middot; On-Device AI
             </div>
           </motion.div>
 
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
             <SplitLine text={LINE_ONE} delay={0.1} />
-            <span className="mt-1 block bg-gradient-to-r from-[oklch(0.7_0.25_270)] via-[oklch(0.75_0.2_220)] to-[oklch(0.78_0.2_310)] bg-clip-text text-transparent gradient-shimmer">
+            <span className="mt-1 block bg-gradient-to-r from-[oklch(0.6_0.15_250)] via-[oklch(0.7_0.13_215)] to-[oklch(0.74_0.12_180)] bg-clip-text pb-[0.15em] -mb-[0.15em] text-transparent gradient-shimmer">
               <SplitLine text={LINE_TWO} delay={0.4} gradient />
             </span>
           </h1>
@@ -124,7 +124,7 @@ export function Hero() {
             <Magnetic>
               <Button asChild size="lg" className="group relative overflow-hidden">
                 <Link href="/products">
-                  <span className="absolute inset-0 -z-10 bg-gradient-to-r from-[oklch(0.6_0.25_270)] via-[oklch(0.7_0.2_220)] to-[oklch(0.65_0.22_310)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <span className="absolute inset-0 -z-10 bg-gradient-to-r from-[oklch(0.5_0.16_255)] via-[oklch(0.68_0.13_220)] to-[oklch(0.7_0.12_180)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   Explore Products
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
@@ -177,7 +177,11 @@ function SplitLine({
           {word.split("").map((char, ci) => (
             <motion.span
               key={ci}
-              className="inline-block"
+              className={
+                gradient
+                  ? "inline-block pb-[0.15em] -mb-[0.15em]"
+                  : "inline-block"
+              }
               initial={{ opacity: 0, y: "60%", rotateX: -40 }}
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{

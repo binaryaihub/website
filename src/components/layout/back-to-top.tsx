@@ -38,10 +38,10 @@ export function BackToTop() {
           className={cn(
             "fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full",
             "border border-border/60 bg-background/60 text-foreground backdrop-blur-xl",
-            "shadow-[0_0_30px_-8px_oklch(0.7_0.2_270/0.45)] transition-shadow hover:shadow-[0_0_40px_-6px_oklch(0.7_0.2_270/0.6)]"
+            "shadow-[0_0_30px_-8px_oklch(0.6_0.15_250/0.45)] transition-shadow hover:shadow-[0_0_40px_-6px_oklch(0.6_0.15_250/0.6)]"
           )}
         >
-          <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-br from-[oklch(0.6_0.25_270)]/25 via-transparent to-[oklch(0.75_0.18_200)]/25 opacity-0 transition-opacity hover:opacity-100" />
+          <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-br from-[oklch(0.5_0.16_255)]/25 via-transparent to-[oklch(0.72_0.12_195)]/25 opacity-0 transition-opacity hover:opacity-100" />
           <ArrowUp className="h-5 w-5" />
         </motion.button>
       )}

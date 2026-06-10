@@ -21,11 +21,11 @@ export function CtaNewsletter() {
         >
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Stay in the{" "}
-            <span className="bg-gradient-to-r from-[oklch(0.7_0.25_270)] via-[oklch(0.75_0.2_220)] to-[oklch(0.78_0.2_310)] bg-clip-text text-transparent gradient-shimmer">
+            <span className="bg-gradient-to-r from-[oklch(0.6_0.15_250)] via-[oklch(0.7_0.13_215)] to-[oklch(0.74_0.12_180)] bg-clip-text text-transparent gradient-shimmer">
               Loop
             </span>
           </h2>
-          <p className="mt-4 text-muted-foreground">
+          <p className="mt-4 text-foreground/75">
             Get notified when we launch new products and publish new articles.
             No spam, unsubscribe anytime.
           </p>
@@ -37,18 +37,18 @@ export function CtaNewsletter() {
             <Input
               type="email"
               placeholder="you@example.com"
-              className="flex-1 backdrop-blur-sm"
+              className="h-10 flex-1 border-2 border-foreground/25 bg-background dark:bg-background placeholder:text-muted-foreground/90 hover:border-foreground/40"
               required
             />
             <Magnetic>
               <Button type="submit" className="group relative overflow-hidden">
-                <span className="absolute inset-0 -z-10 bg-gradient-to-r from-[oklch(0.6_0.25_270)] via-[oklch(0.7_0.2_220)] to-[oklch(0.65_0.22_310)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <span className="absolute inset-0 -z-10 bg-gradient-to-r from-[oklch(0.5_0.16_255)] via-[oklch(0.68_0.13_220)] to-[oklch(0.7_0.12_180)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 <Send className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 Subscribe
               </Button>
             </Magnetic>
           </form>
-          <p className="mt-3 text-xs text-muted-foreground">
+          <p className="mt-3 text-xs text-foreground/60">
             We respect your privacy. Unsubscribe at any time.
           </p>
         </AnimatedContainer>

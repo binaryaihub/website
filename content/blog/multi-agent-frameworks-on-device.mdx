@@ -1,0 +1,49 @@
+---
+title: "Multi-Agent Frameworks Meet the Edge: What Actually Works On-Device"
+description: "A field report on running agentic workflows on phones — where multi-agent patterns help, where they fall apart, and the architecture we've settled on for local-first apps."
+date: "2026-06-10"
+tags: ["engineering", "ai", "agents", "on-device"]
+published: true
+---
+
+Multi-agent frameworks are everywhere right now — orchestrators, planners, critics, swarms. Most of that writing assumes a datacenter: unlimited tokens, fast inter-agent round trips, and a network that never goes away. We build for phones, where none of that is true. Here's what we've learned trying to make agentic patterns work in a local-first architecture.
+
+## The constraint stack on mobile
+
+Before any framework discussion, the physics:
+
+- **Memory** — a 3B-parameter model quantized to 4 bits still wants ~2 GB. You get one resident model, not five specialist agents each with their own weights.
+- **Thermals** — sustained inference throttles within minutes. An agent loop that "thinks" for 90 seconds is a hand-warmer, not a feature.
+- **Battery** — every extra reasoning hop is measured in milliamp-hours the user paid for.
+- **Latency budget** — mobile UX tolerates ~2 seconds before an interaction feels broken. Cloud agent stacks happily spend 30.
+
+Any multi-agent design that ignores this stack is a demo, not a product.
+
+## What survives the trip from cloud to device
+
+The surprising part: the *patterns* survive even when the *frameworks* don't.
+
+**Role separation survives.** You don't need two models to have two agents. One local model with two tightly-scoped system prompts — a planner that decomposes the task, an executor that handles one step at a time — outperforms a single do-everything prompt at the same parameter count. The win comes from shorter contexts and narrower output spaces, which also means fewer tokens, which means less heat.
+
+**Critic loops survive, barely.** A verify pass catches real mistakes, but on-device you can afford exactly one. We run it only on actions with side effects (writing data, sending anything) and skip it for read-only answers. Budgeted skepticism.
+
+**Free-form agent chatter does not survive.** Agents negotiating with each other in natural language is token fire. On-device, inter-agent communication has to be structured — small JSON contracts, not conversation. If two of your agents are exchanging paragraphs, you've built a slow RPC system with extra steps.
+
+## The architecture we've settled on
+
+Our current shape for agentic features inside our apps:
+
+1. **One resident model, many hats.** A single quantized model swaps roles via prompt templates. Role switches are cheap; model switches are not.
+2. **A deterministic orchestrator.** The control flow — what runs, in what order, with what budget — is ordinary code, not a model decision. The model fills in the steps; it doesn't get to invent the pipeline.
+3. **Tools over reasoning.** Anything with a correct answer (dates, math, search over local data) is a function call, never a generation. Tokens are for judgment, not lookup.
+4. **Hard budgets everywhere.** Every agent invocation carries a token ceiling and a wall-clock deadline. Hitting the ceiling degrades gracefully to a simpler single-shot path.
+
+The result doesn't look like the multi-agent diagrams on a framework's landing page. It looks like a small state machine that occasionally consults a language model. That's a feature.
+
+## Why this matters for privacy
+
+There's a quiet alignment between agentic architecture and privacy. The moment your agent loop spans the network, every intermediate thought — including the user's raw context — transits a server. Keep the whole loop on the device and the privacy story isn't a policy, it's a topology: the data can't leak from a round trip that never happens.
+
+That's the bet behind everything we ship: the interesting frontier isn't bigger agent swarms in the cloud — it's how much agency you can fit in a pocket without sending a single byte out of it.
+
+We'll publish numbers from our production telemetry (thermals, token budgets, completion rates) in a follow-up post.
