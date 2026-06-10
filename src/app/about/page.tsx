@@ -52,27 +52,31 @@ export default function AboutPage() {
           />
         </AnimatedContainer>
 
-        <AnimatedContainer delay={0.1} className="mx-auto mt-12 max-w-3xl">
-          <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <div className="mx-auto mt-12 max-w-3xl space-y-6 text-muted-foreground leading-relaxed">
+          <AnimatedContainer variant="blur-up" delay={0.1}>
             <p>
               BinaryAIHub was founded with a simple belief: AI should work{" "}
               <em>for</em> people, not the other way around. Too many AI
               products are built as tech demos — impressive on stage but useless
               in practice.
             </p>
+          </AnimatedContainer>
+          <AnimatedContainer variant="blur-up" delay={0.2}>
             <p>
               We take a different approach. Every app we build starts with a
               real problem, then applies AI as the solution — not the other way
               around. Our hybrid architecture means our apps work offline,
               respect your privacy, and get smarter over time.
             </p>
+          </AnimatedContainer>
+          <AnimatedContainer variant="blur-up" delay={0.3}>
             <p>
               Based in the intersection of mobile engineering and artificial
               intelligence, our team brings together expertise in Swift, Kotlin,
               machine learning, and product design.
             </p>
-          </div>
-        </AnimatedContainer>
+          </AnimatedContainer>
+        </div>
 
         <div className="mt-20 grid gap-6 sm:grid-cols-3 [perspective:1200px]">
           {values.map((value, index) => (

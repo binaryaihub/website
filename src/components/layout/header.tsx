@@ -66,7 +66,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-foreground",
+                  "group relative rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-foreground",
                   active ? "text-foreground" : "text-muted-foreground"
                 )}
               >
@@ -78,6 +78,12 @@ export function Header() {
                   />
                 )}
                 {item.title}
+                {!active && (
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-3 bottom-1 h-px origin-left scale-x-0 bg-gradient-to-r from-[oklch(0.7_0.2_270)] to-[oklch(0.75_0.18_200)] transition-transform duration-300 group-hover:scale-x-100"
+                  />
+                )}
               </Link>
             );
           })}

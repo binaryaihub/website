@@ -157,7 +157,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .aurora-blob {
+  .aurora-blob,
+  .gradient-shimmer,
+  .float-dot {
     animation: none;
   }
 }
@@ -175,6 +177,20 @@
 .gradient-shimmer {
   background-size: 200% 200%;
   animation: gradient-shift 8s ease-in-out infinite;
+}
+
+/* Gentle drifting dots (hero depth) */
+@keyframes float-y {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(3px, -14px, 0);
+  }
+}
+
+.float-dot {
+  animation: float-y 10s ease-in-out infinite;
 }
 
 /* Subtle noise for depth */

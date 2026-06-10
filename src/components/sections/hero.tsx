@@ -3,11 +3,17 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import * as motion from "motion/react-client";
-import { useMotionValue, useSpring, useTransform } from "motion/react";
+import {
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useReducedMotion,
+} from "motion/react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AuroraBackground } from "@/components/shared/aurora-background";
 import { GridBackground } from "@/components/shared/grid-background";
+import { FloatingDots } from "@/components/shared/floating-dots";
 import { Magnetic } from "@/components/shared/magnetic";
 
 const LINE_ONE = "Intelligence in";
@@ -21,6 +27,7 @@ const TAGLINES = [
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const smx = useSpring(mx, { stiffness: 60, damping: 20 });
@@ -34,6 +41,7 @@ export function Hero() {
   const orb3Y = useTransform(smy, (v) => v * -25);
 
   useEffect(() => {
+    if (reduceMotion) return;
     function onMove(e: MouseEvent) {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
@@ -42,7 +50,7 @@ export function Hero() {
     }
     window.addEventListener("mousemove", onMove);
     return () => window.removeEventListener("mousemove", onMove);
-  }, [mx, my]);
+  }, [mx, my, reduceMotion]);
 
   return (
     <section
@@ -51,6 +59,7 @@ export function Hero() {
     >
       <AuroraBackground intensity="normal" />
       <GridBackground />
+      <FloatingDots />
 
       <motion.div
         aria-hidden
@@ -77,7 +86,7 @@ export function Hero() {
           >
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/40 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur-md">
               <motion.span
-                animate={{ rotate: [0, 15, -10, 0] }}
+                animate={reduceMotion ? undefined : { rotate: [0, 15, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
               >
                 <Sparkles className="h-3.5 w-3.5 text-[oklch(0.75_0.18_280)]" />
@@ -99,7 +108,11 @@ export function Hero() {
             transition={{ delay: 0.9, duration: 0.6 }}
             className="mt-6 min-h-[3.5rem] text-lg leading-8 text-muted-foreground sm:text-xl"
           >
-            <Typewriter phrases={TAGLINES} />
+            {reduceMotion ? (
+              <span>{TAGLINES[0]}</span>
+            ) : (
+              <Typewriter phrases={TAGLINES} />
+            )}
           </motion.div>
 
           <motion.div
@@ -136,7 +149,7 @@ export function Hero() {
             <div className="flex flex-col items-center gap-2 text-xs text-muted-foreground">
               <span className="tracking-widest uppercase">Scroll</span>
               <motion.div
-                animate={{ y: [0, 8, 0] }}
+                animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
                 transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
                 className="h-8 w-[1px] bg-gradient-to-b from-muted-foreground/60 to-transparent"
               />

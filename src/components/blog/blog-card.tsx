@@ -31,7 +31,7 @@ export function BlogCard({
   index,
 }: BlogCardProps) {
   return (
-    <AnimatedContainer delay={index * 0.08} variant="fade-up">
+    <AnimatedContainer delay={Math.min(index, 5) * 0.08} variant="blur-up">
       <SpotlightCard className="h-full rounded-xl">
         <Link href={`/blog/${slug}`} className="block h-full">
           <Card className="group relative h-full overflow-hidden border-border/50 bg-card/60 backdrop-blur-sm transition-all duration-300 hover:border-border hover:shadow-[0_0_30px_-10px_oklch(0.7_0.2_270/0.3)]">

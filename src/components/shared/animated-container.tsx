@@ -5,7 +5,13 @@ import * as motion from "motion/react-client";
 import type { TargetAndTransition } from "motion/react";
 import { cn } from "@/lib/utils";
 
-type Variant = "fade-up" | "fade" | "scale" | "slide-left" | "slide-right";
+type Variant =
+  | "fade-up"
+  | "fade"
+  | "scale"
+  | "slide-left"
+  | "slide-right"
+  | "blur-up";
 
 interface AnimatedContainerProps {
   children: ReactNode;
@@ -38,6 +44,10 @@ const variants: Record<
   "slide-right": {
     initial: { opacity: 0, x: 40 },
     whileInView: { opacity: 1, x: 0 },
+  },
+  "blur-up": {
+    initial: { opacity: 0, y: 20, filter: "blur(6px)" },
+    whileInView: { opacity: 1, y: 0, filter: "blur(0px)" },
   },
 };
 

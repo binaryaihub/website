@@ -2,7 +2,7 @@
 
 import { useRef, type ReactNode, type MouseEvent } from "react";
 import * as motion from "motion/react-client";
-import { useMotionValue, useSpring } from "motion/react";
+import { useMotionValue, useSpring, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface MagneticProps {
@@ -17,13 +17,14 @@ export function Magnetic({
   strength = 0.25,
 }: MagneticProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const sx = useSpring(x, { stiffness: 200, damping: 18, mass: 0.4 });
   const sy = useSpring(y, { stiffness: 200, damping: 18, mass: 0.4 });
 
   function handleMove(e: MouseEvent<HTMLDivElement>) {
-    if (!ref.current) return;
+    if (!ref.current || reduceMotion) return;
     const rect = ref.current.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import * as motion from "motion/react-client";
+import { useReducedMotion } from "motion/react";
 import { Github, Mail, ArrowUpRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { AuroraBackground } from "@/components/shared/aurora-background";
@@ -72,7 +73,14 @@ const columns: { title: string; links: { title: string; href: string }[] }[] = [
   { title: "Legal", links: footerLinks.legal },
 ];
 
+const revealProps = {
+  initial: { opacity: 0, y: 16 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+} as const;
+
 export function Footer() {
+  const reduceMotion = useReducedMotion();
   return (
     <footer className="relative overflow-hidden border-t border-border/40">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.7_0.2_270)]/60 to-transparent" />
@@ -80,7 +88,11 @@ export function Footer() {
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 py-14 md:grid-cols-4">
-          <div className="col-span-2 md:col-span-1">
+          <motion.div
+            {...revealProps}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="col-span-2 md:col-span-1"
+          >
             <Link
               href="/"
               className="group inline-flex items-center gap-2 font-bold"
@@ -106,10 +118,18 @@ export function Footer() {
               <span>{siteConfig.email}</span>
               <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
             </a>
-          </div>
+          </motion.div>
 
-          {columns.map((col) => (
-            <div key={col.title}>
+          {columns.map((col, i) => (
+            <motion.div
+              key={col.title}
+              {...revealProps}
+              transition={{
+                duration: 0.5,
+                delay: (i + 1) * 0.08,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
               <h3 className="text-sm font-semibold tracking-wide text-foreground/90">
                 {col.title}
               </h3>
@@ -128,7 +148,7 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -164,7 +184,7 @@ export function Footer() {
           <p className="inline-flex items-center gap-1.5">
             Crafted with
             <motion.span
-              animate={{ scale: [1, 1.2, 1] }}
+              animate={reduceMotion ? undefined : { scale: [1, 1.2, 1] }}
               transition={{
                 duration: 1.6,
                 repeat: Infinity,

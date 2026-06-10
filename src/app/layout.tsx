@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { BackToTop } from "@/components/layout/back-to-top";
 import { PageTransition } from "@/components/layout/page-transition";
+import { MotionProvider } from "@/components/layout/motion-provider";
 import { ScrollProgress } from "@/components/shared/scroll-progress";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
@@ -72,15 +73,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ScrollProgress />
-          <div className="relative flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1">
-              <PageTransition>{children}</PageTransition>
-            </main>
-            <Footer />
-          </div>
-          <BackToTop />
+          <MotionProvider>
+            <ScrollProgress />
+            <div className="relative flex min-h-screen flex-col">
+              <Header />
+              <main className="flex-1">
+                <PageTransition>{children}</PageTransition>
+              </main>
+              <Footer />
+            </div>
+            <BackToTop />
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>

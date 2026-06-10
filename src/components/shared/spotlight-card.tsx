@@ -2,7 +2,12 @@
 
 import { useRef, type ReactNode, type MouseEvent } from "react";
 import * as motion from "motion/react-client";
-import { useMotionValue, useSpring, useTransform } from "motion/react";
+import {
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useReducedMotion,
+} from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface SpotlightCardProps {
@@ -17,6 +22,7 @@ export function SpotlightCard({
   tilt = true,
 }: SpotlightCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const rotateXRaw = useMotionValue(0);
@@ -37,7 +43,7 @@ export function SpotlightCard({
     const y = e.clientY - rect.top;
     mouseX.set(x);
     mouseY.set(y);
-    if (tilt) {
+    if (tilt && !reduceMotion) {
       const px = (x / rect.width - 0.5) * 2;
       const py = (y / rect.height - 0.5) * 2;
       rotateYRaw.set(px * 4);
